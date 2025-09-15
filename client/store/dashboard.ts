@@ -95,6 +95,21 @@ export const useDashboardStore = create<DashboardState>()(
         setSearchQuery: (q) => set({ searchQuery: q }),
       };
     },
-    { name: "dashboard-store" }
+    {
+      name: "dashboard-store",
+      version: 2,
+      migrate: (persisted: any, fromVersion: number) => {
+        try {
+          if (!persisted || fromVersion < 2) {
+            const init = normalize();
+            return { ...init, searchQuery: "" } as DashboardState;
+          }
+          return persisted as DashboardState;
+        } catch {
+          const init = normalize();
+          return { ...init, searchQuery: "" } as DashboardState;
+        }
+      },
+    }
   )
 );
