@@ -5,11 +5,57 @@
     { "id": "registry", "name": "Registry Scan", "widgetIds": ["image-risk", "image-security"] }
   ],
   "widgets": [
-    { "id": "cloud-assets", "name": "Cloud Accounts", "text": "Connected: 12, Not Connected: 3" },
-    { "id": "cloud-risk", "name": "Cloud Account Risk Assessment", "text": "Passed: 7650, Warning: 341, Failed: 120" },
+    {
+      "id": "cloud-assets",
+      "name": "Cloud Accounts",
+      "text": "Connected: 12, Not Connected: 3",
+      "chart": {
+        "type": "doughnut",
+        "data": {
+          "labels": ["Connected", "Not Connected"],
+          "datasets": [
+            { "label": "Accounts", "data": [12, 3], "backgroundColor": ["#22c55e", "#ef4444"], "borderWidth": 0 }
+          ]
+        },
+        "options": { "plugins": { "legend": { "position": "bottom" } }, "maintainAspectRatio": false }
+      }
+    },
+    {
+      "id": "cloud-risk",
+      "name": "Cloud Account Risk Assessment",
+      "text": "Passed: 7650, Warning: 341, Failed: 120",
+      "chart": {
+        "type": "doughnut",
+        "data": {
+          "labels": ["Passed", "Warning", "Failed"],
+          "datasets": [
+            { "label": "Checks", "data": [7650, 341, 120], "backgroundColor": ["#22c55e", "#f59e0b", "#ef4444"], "borderWidth": 0 }
+          ]
+        },
+        "options": { "plugins": { "legend": { "position": "bottom" } }, "maintainAspectRatio": false }
+      }
+    },
     { "id": "namespace-alerts", "name": "Top 5 Namespace Specific Alerts", "text": "No graph data available" },
     { "id": "workload-alerts", "name": "Workload Alerts", "text": "No graph data available" },
-    { "id": "image-risk", "name": "Image Risk Assessment", "text": "1470 total vulnerabilities" },
+    {
+      "id": "image-risk",
+      "name": "Image Risk Assessment",
+      "text": "1470 total vulnerabilities",
+      "chart": {
+        "type": "bar",
+        "data": {
+          "labels": ["Critical", "High", "Medium", "Low"],
+          "datasets": [
+            { "label": "Vulnerabilities", "data": [120, 380, 620, 350], "backgroundColor": ["#ef4444", "#f59e0b", "#3b82f6", "#22c55e"] }
+          ]
+        },
+        "options": {
+          "plugins": { "legend": { "display": false }, "title": { "display": false } },
+          "scales": { "y": { "beginAtZero": true } },
+          "maintainAspectRatio": false
+        }
+      }
+    },
     { "id": "image-security", "name": "Image Security Issues", "text": "21 base images, Critical: 12, High: 92" }
   ]
 }
