@@ -39,7 +39,7 @@ export default function AddWidgetDialog({ categoryId, open: controlledOpen, onOp
   }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={(o)=>{ if(o){ setSearchQuery(""); } setOpen(o); }}>
       {trigger ? (
         <DialogTrigger asChild>{trigger}</DialogTrigger>
       ) : (
