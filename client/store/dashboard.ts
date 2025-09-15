@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import data from "../data/dashboard.json";
 
-export type Widget = { id: string; name: string; text: string };
+export type Widget = { id: string; name: string; text: string; chart?: { type: "doughnut" | "bar"; data: any; options?: any } | null };
 export type Category = { id: string; name: string; widgetIds: string[] };
 
 export interface DashboardState {
