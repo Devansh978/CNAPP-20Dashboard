@@ -17,7 +17,7 @@ export default function CategorySection({ id }: { id: string }) {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {widgets.map((w) => (
-          <WidgetCard key={w.id} id={w.id} title={w.name} text={w.text} onRemove={(wid) => removeWidgetFromCategory(id, wid)} />
+          <WidgetCard key={w.id} id={w.id} title={w.name} text={w.text} chart={w.chart ?? null} onRemove={(wid) => removeWidgetFromCategory(id, wid)} />
         ))}
         <AddWidgetPlaceholder onClick={() => { /* open via hidden button: use label by id approach would be complex; instead rely on visible button above */ }} />
       </div>
