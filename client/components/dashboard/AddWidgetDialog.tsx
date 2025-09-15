@@ -87,7 +87,7 @@ export default function AddWidgetDialog({ categoryId, open: controlledOpen, onOp
               })}
             </div>
             <DialogFooter>
-              <Button onClick={() => setOpen(false)} className="ml-auto">Done</Button>
+              <Button onClick={() => setOpen(false)} className="ml-auto">Confirm</Button>
             </DialogFooter>
           </TabsContent>
         </Tabs>
