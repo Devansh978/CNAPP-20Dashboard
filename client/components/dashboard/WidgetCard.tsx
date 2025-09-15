@@ -1,15 +1,17 @@
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import ChartWidget, { ChartConfig } from "@/components/dashboard/ChartWidget";
 
 export type WidgetCardProps = {
   id: string;
   title: string;
   text: string;
+  chart?: ChartConfig | null;
   onRemove?: (id: string) => void;
 };
 
-export function WidgetCard({ id, title, text, onRemove }: WidgetCardProps) {
+export function WidgetCard({ id, title, text, chart, onRemove }: WidgetCardProps) {
   return (
     <Card className="relative shadow-sm hover:shadow-md transition-shadow">
       {onRemove && (
@@ -25,7 +27,13 @@ export function WidgetCard({ id, title, text, onRemove }: WidgetCardProps) {
         <CardTitle className="text-base font-semibold">{title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-sm text-muted-foreground leading-relaxed">{text}</p>
+        {chart ? (
+          <div className="h-48">
+            <ChartWidget config={chart} />
+          </div>
+        ) : (
+          <p className="text-sm text-muted-foreground leading-relaxed">{text}</p>
+        )}
       </CardContent>
     </Card>
   );
