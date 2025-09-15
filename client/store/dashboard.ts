@@ -20,6 +20,7 @@ export interface DashboardState {
   removeWidgetFromCategory: (categoryId: string, widgetId: string) => void;
   toggleWidgetInCategory: (categoryId: string, widgetId: string, checked: boolean) => void;
   setSearchQuery: (q: string) => void;
+  resetToDefaults: () => void;
 }
 
 function arrayUnique<T>(arr: T[]): T[] {
@@ -93,6 +94,15 @@ export const useDashboardStore = create<DashboardState>()(
           else get().removeWidgetFromCategory(categoryId, widgetId);
         },
         setSearchQuery: (q) => set({ searchQuery: q }),
+        resetToDefaults: () => set(() => {
+          const init = normalize();
+          return {
+            categories: init.categories,
+            categoryOrder: init.categoryOrder,
+            widgets: init.widgets,
+            searchQuery: "",
+          } as DashboardState;
+        }),
       };
     },
     {
