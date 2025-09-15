@@ -14,7 +14,7 @@ export function AppShell({ children, className }: PropsWithChildren<{ className?
           <div className="hidden md:block w-72">
             <Input placeholder="Search anything..." className="rounded-full" />
           </div>
-          <Button variant="secondary" className="rounded-full">Settings</Button>
+          <SettingsDialog trigger={<Button variant="secondary" className="rounded-full">Settings</Button>} />
           <Button
             variant="ghost"
             className="rounded-full"
