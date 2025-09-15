@@ -1,0 +1,15 @@
+{
+  "categories": [
+    { "id": "cspm", "name": "CSPM Executive Dashboard", "widgetIds": ["cloud-assets", "cloud-risk"] },
+    { "id": "cnapp", "name": "CNAPP Dashboard", "widgetIds": ["namespace-alerts", "workload-alerts"] },
+    { "id": "registry", "name": "Registry Scan", "widgetIds": ["image-risk", "image-security"] }
+  ],
+  "widgets": [
+    { "id": "cloud-assets", "name": "Cloud Accounts", "text": "Connected: 12, Not Connected: 3" },
+    { "id": "cloud-risk", "name": "Cloud Account Risk Assessment", "text": "Passed: 7650, Warning: 341, Failed: 120" },
+    { "id": "namespace-alerts", "name": "Top 5 Namespace Specific Alerts", "text": "No graph data available" },
+    { "id": "workload-alerts", "name": "Workload Alerts", "text": "No graph data available" },
+    { "id": "image-risk", "name": "Image Risk Assessment", "text": "1470 total vulnerabilities" },
+    { "id": "image-security", "name": "Image Security Issues", "text": "21 base images, Critical: 12, High: 92" }
+  ]
+}
