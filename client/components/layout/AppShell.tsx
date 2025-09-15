@@ -14,6 +14,18 @@ export function AppShell({ children, className }: PropsWithChildren<{ className?
             <Input placeholder="Search anything..." className="rounded-full" />
           </div>
           <Button variant="secondary" className="rounded-full">Settings</Button>
+          <Button
+            variant="ghost"
+            className="rounded-full"
+            onClick={() => {
+              try {
+                localStorage.removeItem("dashboard-store");
+              } catch {}
+              location.reload();
+            }}
+          >
+            Reset
+          </Button>
         </div>
       </header>
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
