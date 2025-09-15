@@ -66,7 +66,7 @@ export const useDashboardStore = create<DashboardState>()(
           set((state) => {
             const exists = state.widgets[id];
             const newWidgets = { ...state.widgets };
-            if (!exists) newWidgets[id] = { id, name: widget.name, text: widget.text };
+            if (!exists) newWidgets[id] = { id, name: widget.name, text: widget.text } as Widget;
             const cat = state.categories[categoryId];
             if (!cat) return state;
             const newCat: Category = {
