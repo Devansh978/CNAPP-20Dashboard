@@ -2,6 +2,7 @@ import { PropsWithChildren } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import SettingsDialog from "@/components/settings/SettingsDialog";
 
 export function AppShell({ children, className }: PropsWithChildren<{ className?: string }>) {
   return (
