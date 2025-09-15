@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { ReactNode, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -6,8 +6,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useDashboardStore } from "@/store/dashboard";
 
-export default function AddWidgetDialog({ categoryId }: { categoryId: string }) {
-  const [open, setOpen] = useState(false);
+export default function AddWidgetDialog({ categoryId, open: controlledOpen, onOpenChange, trigger }: { categoryId: string; open?: boolean; onOpenChange?: (o: boolean) => void; trigger?: ReactNode }) {
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
+  const open = controlledOpen ?? uncontrolledOpen;
+  const setOpen = onOpenChange ?? setUncontrolledOpen;
+
   const addWidgetToCategory = useDashboardStore((s) => s.addWidgetToCategory);
   const toggleWidgetInCategory = useDashboardStore((s) => s.toggleWidgetInCategory);
   const getAllWidgets = useDashboardStore((s) => s.getAllWidgets);
@@ -37,9 +40,13 @@ export default function AddWidgetDialog({ categoryId }: { categoryId: string }) 
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button size="sm" className="rounded-full">+ Add Widget</Button>
-      </DialogTrigger>
+      {trigger ? (
+        <DialogTrigger asChild>{trigger}</DialogTrigger>
+      ) : (
+        <DialogTrigger asChild>
+          <Button size="sm" className="rounded-full">+ Add Widget</Button>
+        </DialogTrigger>
+      )}
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
           <DialogTitle>Add Widget to {category.name}</DialogTitle>
